@@ -1,0 +1,452 @@
+body {
+    background: #100f14;
+    width: 940px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    width: 38px;
+    height: 25px;
+    left: 30px;
+    top: 30px;
+    padding: 10px;
+    margin: 1em;
+}
+
+.frame1 {
+    position: absolute;
+    top: 38%;
+    left: 37%;
+    width: 50%;
+}
+
+.frame1 .iniciar-juego {
+    display: block;
+    position: static;
+    width: 40%;
+    padding: 28px 0;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    background: #8F4088;
+    border: none;
+    border-radius: 28px;
+    margin: 0 24px;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+.frame1 .agregar-palabra {
+    display: block;
+    position: static;
+    width: 40%;
+    padding: 22px 0;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 26px;
+    background: #23212C;
+    margin: 24px;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+.iniciar-juego:active,
+.agregar-palabra:active {
+    transform: scale(0.98);
+}
+
+.textarea {
+    position: absolute;
+    left: 30%;
+    top: 20%;
+    background: none;
+    border: none;
+    outline: none;
+    color: #8F4088;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.textarea::placeholder {
+    color: #8F4088;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.info-arribabotones {
+    position: absolute;
+    top: 68%;
+    left: 30%;
+    color: #8F4088;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.frame2 {
+    position: absolute;
+    top: 76%;
+    left: 28%;
+    width: 50%;
+}
+
+.guardar-empezar {
+    display: inline;
+    position: static;
+    width: 40%;
+    padding: 15px 0;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    background: #8F4088;
+    border: none;
+    border-radius: 20px;
+    margin: 0 24px;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+.cancelar {
+    display: inline;
+    position: static;
+    width: 40%;
+    padding: 15px 0;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    background: #23212C;
+    margin: 0px 24px;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+.guardar-empezar:active,
+.cancelar:active {
+    transform: scale(0.98);
+}
+
+.contenedor-hombre {
+    position: absolute;
+    display: block;
+    top: 18%;
+    left: 42%;
+    height: 38%;
+}
+
+#hombre {
+    width: 75%;
+}
+
+.frame3 {
+    position: absolute;
+    top: 81%;
+    left: 28%;
+    width: 50%;
+}
+
+.nuevo-juego {
+    display: inline;
+    position: static;
+    width: 40%;
+    padding: 15px 0;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    background: #8F4088;
+    border: none;
+    border-radius: 20px;
+    margin: 0 24px;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+.desistir {
+    display: inline;
+    position: static;
+    width: 40%;
+    padding: 15px 0;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    background: #23212C;
+    margin: 0px 24px;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+.nuevo-juego:active,
+.desistir:active {
+    transform: scale(0.98);
+}
+
+.texto-piedepagina {
+    position: absolute;
+    top: 90%;
+    left: 39%;
+    color: #8F4088;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.linkedin {
+    position: absolute;
+    width: 34px;
+    height: 32px;
+    top: 94%;
+    left: 45%;
+}
+
+.github {
+    position: absolute;
+    width: 34px;
+    height: 32px;
+    top: 94%;
+    left: 49%;
+}
+
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.palabra-adivinada {
+    margin-top: 48%;
+    margin-left: 40%;
+    text-align: center;
+}
+
+.palabra-errada {
+    margin-top: 3%;
+    margin-left: 40%;
+    text-align: center;
+}
+
+.adivinada {
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    margin-left: 10px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #8F4088;
+    border-bottom: solid 1px #8F4088;
+}
+
+.errada {
+    display: inline-block;
+    margin-left: 10px;
+    color: #e9a1e3;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+
+@media only screen and (min-width:320px) and (max-width:480px) {
+    body {
+        width: auto;
+    }
+
+    .logo,
+    .frame1,
+    .frame2,
+    .frame3,
+    .contenedor-hombre,
+    .palabra-adivinada,
+    .palabra-errada,
+    .adivinada,
+    .errada,
+    .texto-piedepagina,
+    .linkedin,
+    .github,
+    .textarea,
+    .info-arribabotones {
+        position: inherit;
+    }
+
+    .contenedor-hombre {
+        width: 90%;
+        margin-left: 10%;
+        margin-top: 20%;
+    }
+
+    .frame1 .iniciar-juego {
+        width: 90%;
+        margin-top: 100%;
+        margin-left: 54%;
+    }
+
+    .frame1 .agregar-palabra {
+        width: 85%;
+        margin-top: 30px;
+        margin-left: 56%;
+    }
+
+    .textarea {
+        width: 90%;
+        margin-top: 20%;
+        margin-left: 3%;
+        margin-bottom: 70%;
+    }
+
+    .info-arribabotones {
+        width: 85%;
+        margin-left: 2%;
+        margin-bottom: 20%;
+    }
+
+    .frame2 .guardar-empezar {
+        width: 90%;
+        margin-top: 20px;
+        margin-left: 50%;
+    }
+
+    .frame2 .cancelar {
+        width: 90%;
+        margin-top: 20px;
+        margin-left: 50%;
+    }
+
+    .palabra-adivinada {
+        margin-top: 24%;
+        margin-left: 0;
+    }
+
+    .palabra-errada {
+        margin-top: 8%;
+        margin-left: 0;
+    }
+
+    .frame3 .nuevo-juego,
+    .frame3 .desistir {
+        width: 90%;
+        margin-top: 20px;
+        margin-left: 50%;
+    }
+
+    .texto-piedepagina {
+        text-align: center;
+        margin-top: 30%;
+        font-size: 0.9em;
+    }
+
+    .linkedin,
+    .github {
+        margin-top: 12px;
+    }
+
+    .linkedin {
+        margin-left: 35%;
+    }
+
+    .github {
+        margin-left: 20px;
+    }
+}
+
+@media only screen and (min-width:481px) and (max-width:1100px) {
+    body {
+        width: auto;
+    }
+
+
+    .logo,
+    .frame1,
+    .frame2,
+    .frame3,
+    .contenedor-hombre,
+    .palabra-adivinada,
+    .palabra-errada,
+    .adivinada,
+    .errada,
+    .texto-piedepagina,
+    .linkedin,
+    .github,
+    .textarea,
+    .info-arribabotones {
+        position: inherit;
+    }
+
+    .frame1 .iniciar-juego {
+        width: 100%;
+        margin-top: 100%;
+        margin-left: 54%;
+        font-size: 1rem;
+    }
+
+    .frame1 .agregar-palabra {
+        width: 95%;
+        margin-top: 30px;
+        margin-left: 56%;
+        font-size: 1rem;
+    }
+
+    .texto-piedepagina {
+        text-align: center;
+        margin-top: 4%;
+        font-size: 1.5rem;
+    }
+
+    .linkedin,
+    .github {
+        margin-top: 12px;
+    }
+
+    .linkedin {
+        margin-left: 44%;
+    }
+
+    .github {
+        margin-left: 20px;
+    }
+
+    .contenedor-hombre {
+        height: 80%;
+        width: 85%;
+        margin-left: 11%;
+        margin-top: 12%;
+    }
+
+    .palabra-adivinada {
+        margin-top: 8%;
+        margin-left: 0;
+    }
+
+    .palabra-errada {
+        margin-left: 0;
+    }
+
+    .frame3 {
+        width: 90%;
+        margin-top: 5%;
+        margin-left: 80px;
+    }
+
+    .frame3 .nuevo-juego,
+    .frame3 .desistir {
+        width: 40%;
+        font-size: 1.2rem;
+    }
+
+}
