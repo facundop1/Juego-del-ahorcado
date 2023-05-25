@@ -1,140 +1,137 @@
-var palabras = [localStorage.getItem("addword"),"AZUL", "ROJO", "PERRO", "GATO", "TWITCH", "YOUTUBE"];
+const words = [localStorage.getItem("addword"), "AZUL", "ROJO", "PERRO", "GATO", "TWITCH", "YOUTUBE"];
+let game = null;
+let finished = false;
 
-var juego = null;
-var finalizado = false;
+const gameState = { 
+  word: "",
+  state: 7,
+  guessed: [""],
+  wrong: 0,
+};
 
-var juego = { 
-    palabra: "",
-    estado:7,
-    adivinado: [""],
-    errado: 0,
-}
-var $html = {
-    hombre: document.getElementById("hombre"),
-    adivinado: document.querySelector(".palabra-adivinada"),
-    errado: document.querySelector(".palabra-errada")
-}
+const $html = {
+  man: document.getElementById("hombre"),
+  guessed: document.querySelector(".palabra-adivinada"),
+  wrong: document.querySelector(".palabra-errada")
+};
 
-function dibujar(juego){
-    var $elem;
-    $elem = $html.hombre;
-    $elem.src = "./img/0" +juego.estado +".svg";
+function draw(game) {
+  $html.man.src = `./img/0${game.state}.svg`;
+  
+  const word = game.word;
+  const guessed = game.guessed;
+  $html.guessed.innerHTML = "";
 
-    var palabra = juego.palabra;
-    var adivinado = juego.adivinado;
-    $elem = $html.adivinado;
-    $elem.innerHTML = "";
+  for (const letter of word) {
+    const $span = document.createElement("span");
+    const $txt = document.createTextNode("");
 
-    for(var letra of palabra){
-        var $span = document.createElement("span");
-        var $txt = document.createTextNode("");
-
-        if(adivinado.indexOf(letra) >= 0) {
-            $txt.nodeValue = letra;
-        }
-     
-        $span.setAttribute("class","adivinada");
-        $span.appendChild($txt);
-        $elem.appendChild($span);
+    if (guessed.includes(letter)) {
+      $txt.nodeValue = letter;
     }
 
-    var errado = juego.errado;
-    $elem = $html.errado;
-    $elem.innerHTML = "";
+    $span.setAttribute("class", "adivinada");
+    $span.appendChild($txt);
+    $html.guessed.appendChild($span);
+  }
 
-    for(var letra of errado){
-        var $span= document.createElement("span");
-        var $txt= document.createTextNode(letra);
-        $span.setAttribute("class","errada");
-        $span.appendChild($txt);
-        $elem.appendChild($span);
-    }
+  const wrong = game.wrong;
+  $html.wrong.innerHTML = "";
+
+  for (const letter of wrong) {
+    const $span = document.createElement("span");
+    const $txt = document.createTextNode(letter);
+    $span.setAttribute("class", "errada");
+    $span.appendChild($txt);
+    $html.wrong.appendChild($span);
+  }
 }
 
-function adivinar(juego,letra){
-    var estado = juego.estado;
+function adivinar(game, letter) {
+  const state = game.state;
 
-    if(estado === 1 || estado === 8) {
-        return;
+  if (state === 1 || state === 8) {
+    return;
+  }
+
+  const guessed = game.guessed;
+  const wrong = game.wrong;
+
+  if (guessed.includes(letter) || wrong.includes(letter)) {
+    return;
+  }
+
+  const word = game.word;
+
+  if (word.includes(letter)) {
+    let won = true;
+
+    for (const lt of word) {
+      if (!guessed.includes(lt) && lt !== letter) {
+        won = false;
+        game.previo = game.state;
+        break;
+      }
     }
 
-    var adivinado = juego.adivinado;
-    var errado = juego.errado;
-
-    if (adivinado.indexOf(letra)>=0 || errado.indexOf(letra)>=0) {
-        return;
+    if (won) {
+      game.state = 8;
     }
 
-    var palabra = juego.palabra;
-
-    if(palabra.indexOf(letra)>=0) {
-        ganado = true;
-
-        for(var lt of palabra) {
-            if(adivinado.indexOf(lt) < 0  && lt != letra){
-                ganado = false;
-                juego.previo = juego.estado;
-                break;
-            }
-        }
-
-        if (ganado){
-            juego.estado = 8;
-        }
-
-        adivinado.push(letra);
-
-    }else{
-        juego.estado--
-        errado.push(letra);
-    }
-}
-window.onkeypress =function adivinarLetra(e) {
-    var letra = e.key;
-    letra = letra.toUpperCase();
-
-    if(/[*!@#$%^&()_=+,./?<>;:"'|\~`a-zñÁÉÍÓÚáéíóú0-9]/.test(letra)) {
-        return;
-    }
-
-    adivinar(juego,letra);
-    var estado = juego.estado;
-
-    if(estado === 8 && !finalizado) {
-        setTimeout(alertaGanado,250);
-        finalizado = true;
-    }else if(estado === 1 && !finalizado) {
-        var palabra = juego.palabra;
-        var fn = alertaPerdido.bind(undefined,palabra);
-        setTimeout(fn,250);
-        finalizado = true;
-    }
-
-    dibujar(juego);
- }
-
-window.nuevoJuego = function nuevoJuego() {
-    var palabra = palabraAleatoria();
-    juego = {};
-    juego.palabra = palabra;
-    juego.estado = 7;
-    juego.adivinado = [];
-    juego.errado = [];
-    finalizado = false;
-    dibujar(juego);
-    console.log(palabra);
- }
-
-function palabraAleatoria(){
-    var index = ~~(Math.random()*palabras.length);
-    return palabras[index];
+    guessed.push(letter);
+  } else {
+    game.state--;
+    wrong.push(letter);
+  }
 }
 
-function alertaGanado(estado) {
-    alert("Felicidades has ganado!");
+window.onkeypress = function guessLetter(e) {
+  let letter = e.key;
+  letter = letter.toUpperCase();
+
+  if (/[*!@#$%^&()_=+,./?<>;:"'|\~`a-zñÁÉÍÓÚáéíóú0-9]/.test(letter)) {
+    return;
+  }
+
+  adivinar(game, letter);
+  const state = game.state;
+
+  if (state === 8 && !finished) {
+    setTimeout(wonAlert, 250);
+    finished = true;
+  } else if (state === 1 && !finished) {
+    const word = game.word;
+    const fn = () => lostAlert(word);
+    setTimeout(fn, 250);
+    finished = true;
+  }
+
+  draw(game);
+};
+
+window.newGame = function newGame() {
+  const word = randomWord();
+  game = {};
+  game.word = word;
+  game.state = 7;
+  game.guessed = [];
+  game.wrong = [];
+  finished = false;
+  draw(game);
+  console.log(word);
+};
+
+function randomWord() {
+  const index = Math.floor(Math.random() * words.length);
+  return words[index];
 }
 
-function alertaPerdido(palabra) {
-    alert("Has perdido, la palabra era.. " + palabra);
+function wonAlert() {
+  alert("¡Felicidades! ¡Ganaste!");
 }
-nuevoJuego();
+
+function lostAlert(word) {
+  alert(`Perdiste, la palabra era: ${word}`);
+}
+
+newGame();

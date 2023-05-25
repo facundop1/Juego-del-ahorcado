@@ -1,19 +1,17 @@
-var agregar = document.querySelector(".guardar-empezar");
+const add = document.querySelector(".guardar-empezar");
 
-agregar.addEventListener("click",function (capturar) {
-    capturar.preventDefault(); 
+add.addEventListener("click", function (event) {
+  event.preventDefault();
 
-    var tx = document.getElementById("textarea").value;
-    var tx = tx;
-    
-if (tx.length === 0 || /^\s+$/.test(tx)) {
-    alert("Este campo no puede estar vacio.")
-}
-else if(/[^A-Z ]/.test(tx)){
-    alert("Solo mayusculas y sin tilde.")
-}else {
-    alert("Se adiciono la palabra con exito!") 
-    localStorage.setItem("addword",tx);
+  const tx = document.getElementById("textarea").value.trim();
+
+  if (tx.length === 0 || /^\s+$/.test(tx)) {
+    alert("Este campo no puede estar vacío.");
+  } else if (/[^A-Z ]/.test(tx)) {
+    alert("Solo se permiten mayúsculas y sin tilde.");
+  } else {
+    alert("¡Se adicionó la palabra con éxito!");
+    localStorage.setItem("addword", tx);
     window.location.href = "game.html";
-}
+  }
 });

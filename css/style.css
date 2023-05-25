@@ -1,6 +1,6 @@
 body {
     background: #100f14;
-    width: 940px;
+    
 }
 
 .logo {
@@ -141,7 +141,7 @@ body {
     position: absolute;
     display: block;
     top: 18%;
-    left: 42%;
+    left: 46%;
     height: 38%;
 }
 
@@ -198,7 +198,7 @@ body {
 .texto-piedepagina {
     position: absolute;
     top: 90%;
-    left: 39%;
+    left: 44%;
     color: #8F4088;
     font-weight: bold;
     font-family: sans-serif;
@@ -210,7 +210,7 @@ body {
     width: 34px;
     height: 32px;
     top: 94%;
-    left: 45%;
+    left: 49%;
 }
 
 .github {
@@ -218,7 +218,7 @@ body {
     width: 34px;
     height: 32px;
     top: 94%;
-    left: 49%;
+    left: 52%;
 }
 
 a {
@@ -230,14 +230,12 @@ a {
 }
 
 .palabra-adivinada {
-    margin-top: 48%;
-    margin-left: 40%;
+    margin-top: 32%;
     text-align: center;
 }
 
 .palabra-errada {
     margin-top: 3%;
-    margin-left: 40%;
     text-align: center;
 }
 
@@ -285,6 +283,10 @@ a {
         position: inherit;
     }
 
+    .frame1 {
+        margin-bottom: 70%;
+    }
+
     .contenedor-hombre {
         width: 90%;
         margin-left: 10%;
@@ -316,6 +318,10 @@ a {
         margin-bottom: 20%;
     }
 
+    .frame2 {
+        margin-bottom: 18%;
+    }
+
     .frame2 .guardar-empezar {
         width: 90%;
         margin-top: 20px;
@@ -338,6 +344,10 @@ a {
         margin-left: 0;
     }
 
+    .frame3 {
+        margin-bottom: 6%;
+    }
+
     .frame3 .nuevo-juego,
     .frame3 .desistir {
         width: 90%;
@@ -347,7 +357,6 @@ a {
 
     .texto-piedepagina {
         text-align: center;
-        margin-top: 30%;
         font-size: 0.9em;
     }
 
@@ -388,6 +397,10 @@ a {
         position: inherit;
     }
 
+    .frame1 {
+        margin-bottom: 44%;
+    }
+
     .frame1 .iniciar-juego {
         width: 100%;
         margin-top: 100%;
@@ -404,7 +417,7 @@ a {
 
     .texto-piedepagina {
         text-align: center;
-        margin-top: 4%;
+        margin-top: 8%;
         font-size: 1.5rem;
     }
 
@@ -419,6 +432,27 @@ a {
 
     .github {
         margin-left: 20px;
+    }
+
+    .textarea {
+        width: 90%;
+        margin-top: 10%;
+        margin-left: 80px;
+        margin-bottom: 60%;
+    }
+
+    .info-arribabotones {
+        width: 85%;
+        margin-left: 80px;
+        margin-bottom: 20%;
+    }
+
+    .frame2 {
+        width: 90%;
+        margin-bottom: 15%;
+        margin-top: 5%;
+        margin-left: 80px;
+        
     }
 
     .contenedor-hombre {
